@@ -1,0 +1,12 @@
+{
+  "name": "heaven-checklist-server",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo \"No build needed\""
+  },
+  "dependencies": {
+    "@netlify/blobs": "^9.1.0"
+  }
+}

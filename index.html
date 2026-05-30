@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>♥ 헤븐전용 ♥ 부농 체크리스트 ♥</title>
+  <meta name="description" content="헤븐전용 부농 체크리스트 - 체크 후 이미지로 저장해서 공유해보세요">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="♥ 헤븐전용 ♥ 부농 체크리스트 ♥">
+  <meta property="og:description" content="체크 후 이미지로 저장해서 공유해보세요">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="♥ 헤븐전용 ♥ 부농 체크리스트 ♥">
+  <meta name="twitter:description" content="체크 후 이미지로 저장해서 공유해보세요">
+  <meta name="twitter:image" content="/og-image.jpg">
+
+  <!-- server version v2 / smaller upload + classic functions + ping -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    :root{
+      --bg1:#fbfaff;
+      --bg2:#f6f3ff;
+      --card:#ffffff;
+      --line:#cdc2f5;
+      --line-strong:#9e8ddd;
+      --text:#24242c;
+      --muted:#71679d;
+      --soft:#f3efff;
+      --soft2:#faf8ff;
+      --highlight:rgba(196, 183, 255, 0.58);
+      --watermark:rgba(158, 141, 221, 0.14);
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Gowun Dodum", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      color: var(--text);
+      padding: 18px 12px 30px;
+    }
+    .app { width: 100%; max-width: 780px; margin: 0 auto; }
+    .notice {
+      margin: 0 auto 14px;
+      border: 1px solid #e2dbfb;
+      background: rgba(255,255,255,.88);
+      border-radius: 18px;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      box-shadow: 0 8px 24px rgba(154, 138, 221, .08);
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      padding: 8px 0 14px;
+      background: linear-gradient(180deg, rgba(251,250,255,.98), rgba(251,250,255,.78), rgba(251,250,255,0));
+      backdrop-filter: blur(8px);
+    }
+    button { font-family: inherit; border: 0; cursor: pointer; }
+    .tool-btn {
+      flex: 1;
+      min-height: 48px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 8px 24px rgba(154,138,221,.10);
+    }
+    .tool-btn:active { transform: scale(.97); }
+    .save {
+      background: linear-gradient(180deg, #b4a3f0, #9986e0);
+      color: #fff;
+    }
+    .reset {
+      background: #fff;
+      color: var(--line-strong);
+      border: 1px solid #e1d8fb;
+    }
+    .sheet-wrap { overflow-x: auto; padding-bottom: 12px; }
+    #captureArea {
+      position: relative;
+      width: 740px;
+      min-height: 1290px;
+      margin: 0 auto;
+      padding: 34px 32px 36px;
+      background: var(--card);
+      border-radius: 26px;
+      box-shadow: 0 20px 56px rgba(154,138,221, 0.14);
+      border: 2px solid #ece7ff;
+      overflow: hidden;
+    }
+    #captureArea::before {
+      content: "HEAVEN";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-11deg);
+      font-size: 136px;
+      font-weight: 400;
+      font-family: "Jua", sans-serif;
+      letter-spacing: 1px;
+      color: var(--watermark);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .header { text-align: center; margin-bottom: 24px; position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid #e2dbfb;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: "Jua", sans-serif;
+      color: var(--line-strong);
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .title-top {
+      margin: 0;
+      font-size: 37px;
+      line-height: 1;
+      font-weight: 400;
+      color: var(--line-strong);
+      letter-spacing: 0;
+      font-family: "Jua", sans-serif;
+    }
+    .title-main {
+      margin: 6px 0 0;
+      font-size: 56px;
+      line-height: 1.02;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -.5px;
+      font-family: "Jua", sans-serif;
+    }
+    .title-main .lav { color: var(--line-strong); }
+    .source-box {
+      margin: 12px auto 0;
+      display: block;
+      width: 430px;
+      padding: 12px 20px;
+      border-radius: 22px;
+      background: #faf8ff;
+      border: 2px solid #e8e0ff;
+      color: #5f548f;
+      box-shadow: none;
+      text-align: center;
+    }
+    .source-box .strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #8170d0;
+      line-height: 1.25;
+    }
+    .source-box .url {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #5f548f;
+      line-height: 1.25;
+    }
+    .helper {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #8a7ac8;
+    }
+    .name-row {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .name-row input {
+      width: 220px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font: inherit;
+      text-align: center;
+      outline: none;
+      color: var(--text);
+      background: #fff;
+      font-size: 15px;
+    }
+    .section { position: relative; z-index: 1; margin-top: 18px; }
+    .q-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.38;
+      font-weight: 700;
+      letter-spacing: -.3px;
+      color: var(--text);
+    }
+    .q-num {
+      min-width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--line-strong);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+    .subhead {
+      margin: 8px 0 6px;
+      padding: 7px 12px;
+      border-radius: 12px;
+      background: var(--soft2);
+      border: 1px solid #e5defd;
+      color: var(--line-strong);
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .grid {
+      display: grid;
+      gap: 0;
+      border-top: 2px solid var(--line);
+      border-left: 2px solid var(--line);
+      background: var(--line);
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+    }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+    .grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+    .grid.cols-7 { grid-template-columns: repeat(7, 1fr); }
+    .option {
+      position: relative;
+      min-height: 50px;
+      padding: 10px 8px;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+      white-space: pre-line;
+    }
+    .option.tall { min-height: 68px; }
+    .option.selected::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 50%;
+      height: 58%;
+      transform: translateY(-50%) rotate(-3deg);
+      border-radius: 30% 70% 58% 42%;
+      background: var(--highlight);
+      z-index: 0;
+    }
+    .option.selected::after {
+      content: "✓";
+      position: absolute;
+      right: 6px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--line-strong);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      z-index: 2;
+    }
+    .option .text { position: relative; z-index: 1; }
+    .inline-input {
+      display: inline-block;
+      width: 72%;
+      min-width: 250px;
+      border: 0;
+      border-bottom: 2px dashed #cabef4;
+      margin-left: 6px;
+      padding: 4px 4px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+    .memo-box {
+      min-height: 92px;
+      border: 2px dashed var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: #fcfbff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+      outline: none;
+      color: var(--text);
+    }
+    .memo-box:empty:before {
+      content: attr(data-placeholder);
+      color: #9789c9;
+      font-weight: 700;
+    }
+    .footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #e0d7ff;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #8679b7;
+      font-weight: 700;
+    }
+    .maker {
+      margin-top: 6px;
+      font-family: "Jua", sans-serif;
+      font-size: 16px;
+      color: var(--line-strong);
+    }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #252233;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .22s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .preview-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(25, 22, 38, 0.62);
+      backdrop-filter: blur(6px);
+    }
+    .preview-modal.show {
+      display: flex;
+    }
+    .preview-box {
+      width: min(94vw, 520px);
+      max-height: 92vh;
+      overflow: auto;
+      border-radius: 22px;
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.24);
+      text-align: center;
+    }
+    .preview-close {
+      float: right;
+      border: 0;
+      border-radius: 999px;
+      background: #f3efff;
+      color: #7b6cc2;
+      padding: 8px 12px;
+      font-weight: 700;
+    }
+    .preview-title {
+      clear: both;
+      padding-top: 8px;
+      font-family: "Jua", sans-serif;
+      font-size: 22px;
+      color: #9e8ddd;
+    }
+    .preview-help {
+      margin: 8px auto 12px;
+      max-width: 420px;
+      color: #71679d;
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+    #previewImage {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #e6defb;
+      -webkit-touch-callout: default;
+      user-select: auto;
+    }
+
+
+    .preview-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .preview-action {
+      min-height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+    }
+    .preview-action.main {
+      background: #9e8ddd;
+      color: #fff;
+    }
+    .preview-action.sub {
+      background: #f3efff;
+      color: #7b6cc2;
+      border: 1px solid #e1d8fb;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 10px 6px 24px;
+        background: #fbfaff;
+      }
+
+      .app {
+        max-width: 100%;
+      }
+
+      .notice {
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .toolbar {
+        padding: 6px 0 10px;
+      }
+
+      .tool-btn {
+        min-height: 44px;
+        font-size: 15px;
+        border-radius: 14px;
+      }
+
+      .sheet-wrap {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      #captureArea {
+        width: calc(100vw - 12px);
+        min-height: auto;
+        padding: 24px 14px 28px;
+        border-radius: 22px;
+        box-shadow: 0 12px 32px rgba(154,138,221, 0.13);
+      }
+
+      #captureArea::before {
+        font-size: 90px;
+        top: 48%;
+      }
+
+      .header {
+        margin-bottom: 20px;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+
+      .title-top {
+        font-size: 34px;
+      }
+
+      .title-main {
+        font-size: 46px;
+        letter-spacing: -0.5px;
+      }
+
+      .source-box {
+        min-width: 0;
+        width: 100%;
+        border-radius: 18px;
+        padding: 11px 12px;
+      }
+
+      .source-box .strong {
+        font-size: 14px;
+      }
+
+      .source-box .url {
+        font-size: 13px;
+      }
+
+      .helper {
+        font-size: 12px;
+      }
+
+      .name-row {
+        font-size: 15px;
+        margin-top: 14px;
+      }
+
+      .name-row input {
+        width: 190px;
+        padding: 8px 10px;
+      }
+
+      .section {
+        margin-top: 17px;
+      }
+
+      .q-title {
+        font-size: 18px;
+        align-items: flex-start;
+      }
+
+      .q-num {
+        min-width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+
+      .subhead {
+        font-size: 13px;
+      }
+
+      .grid.cols-5,
+      .grid.cols-4,
+      .grid.cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid.cols-7 {
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .option {
+        min-height: 48px;
+        padding: 9px 6px;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .option.tall {
+        min-height: 62px;
+      }
+
+      .grid.cols-7 .option {
+        min-height: 42px;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 14px;
+      }
+
+      .inline-input {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        margin: 4px 0 0;
+        font-size: 13px;
+      }
+
+      .memo-box {
+        min-height: 96px;
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .footer {
+        font-size: 11px;
+      }
+
+      .maker {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="notice">
+      체크 후 이미지 저장해서 공유해보세요 ♡ 모든 문항은 복수선택 가능하고, 체크 내용은 서버에 저장되지 않습니다.
+    </div>
+
+    <div class="toolbar">
+      <button class="tool-btn save" onclick="saveAsImage()">이미지 저장하기</button>
+      <button class="tool-btn reset" onclick="resetChecklist()">체크 초기화</button>
+    </div>
+
+    <div class="sheet-wrap">
+      <main id="captureArea">
+        <header class="header">
+          <div class="eyebrow">HEAVEN ONLY CHECKLIST</div>
+          <h1 class="title-top">♥ 헤븐전용 ♥</h1>
+          <h2 class="title-main"><span class="lav">부농</span> 체크리스트 ♡</h2>
+
+          <div class="source-box">
+            <div class="strong">HEAVEN에서 만들었습니다</div>
+            <div class="url">cafe.naver.com/heaven1800</div>
+          </div>
+
+          <div class="helper">체크 후 이미지로 저장해서 공유해보세요 ♥</div>
+
+          <div class="name-row">
+            <span>닉네임</span>
+            <input id="nickname" type="text" maxlength="18" placeholder="닉네임 입력" />
+          </div>
+        </header>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">1</span> 본인 성향</h2>
+          <div class="subhead">DOM</div>
+          <div class="grid cols-5">
+            <button class="option"><span class="text">오너</span></button>
+            <button class="option"><span class="text">대디</span></button>
+            <button class="option"><span class="text">도미넌트</span></button>
+            <button class="option"><span class="text">마스터</span></button>
+            <button class="option"><span class="text">헌터</span></button>
+            <button class="option"><span class="text">브랫 테이머</span></button>
+            <button class="option"><span class="text">디그레이더</span></button>
+            <button class="option"><span class="text">스팽커</span></button>
+            <button class="option"><span class="text">리거</span></button>
+            <button class="option"><span class="text">사디스트</span></button>
+          </div>
+
+          <div class="subhead">SUB</div>
+          <div class="grid cols-5">
+            <button class="option"><span class="text">슬레이브</span></button>
+            <button class="option"><span class="text">펫</span></button>
+            <button class="option"><span class="text">리틀</span></button>
+            <button class="option"><span class="text">브랫</span></button>
+            <button class="option"><span class="text">디그레이디</span></button>
+            <button class="option"><span class="text">로프버니</span></button>
+            <button class="option"><span class="text">프레이</span></button>
+            <button class="option"><span class="text">서브미시브</span></button>
+            <button class="option"><span class="text">마조히스트</span></button>
+            <button class="option"><span class="text">스팽키</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">2</span> 지배와 복종</h2>
+          <div class="grid cols-4">
+            <button class="option"><span class="text">플레이 상황에서만</span></button>
+            <button class="option"><span class="text">부분적 합의</span></button>
+            <button class="option"><span class="text">일상 제외</span></button>
+            <button class="option"><span class="text">절대적 관계추구</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">3</span> 현재 디엣 여부</h2>
+          <div class="grid cols-5">
+            <button class="option"><span class="text">완전 빈농</span></button>
+            <button class="option"><span class="text">디엣중</span></button>
+            <button class="option"><span class="text">플파</span></button>
+            <button class="option"><span class="text">바닐라 애인 유</span></button>
+            <button class="option"><span class="text">대화 X</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">4</span> 비밀유지</h2>
+          <div class="grid cols-3">
+            <button class="option tall"><span class="text">절대 비밀 유지</span></button>
+            <button class="option tall"><span class="text">헤븐에만 사진, 영상 공개가능</span></button>
+            <button class="option tall"><span class="text">공개조교 가능</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">5</span> 만남 가능한 요일</h2>
+          <div class="subhead">가능 요일</div>
+          <div class="grid cols-7">
+            <button class="option"><span class="text">월</span></button>
+            <button class="option"><span class="text">화</span></button>
+            <button class="option"><span class="text">수</span></button>
+            <button class="option"><span class="text">목</span></button>
+            <button class="option"><span class="text">금</span></button>
+            <button class="option"><span class="text">토</span></button>
+            <button class="option"><span class="text">일</span></button>
+          </div>
+          <div class="subhead">만남 빈도 / 스케쥴</div>
+          <div class="grid cols-3">
+            <button class="option"><span class="text">한달 4회 미만</span></button>
+            <button class="option"><span class="text">한달 2회 미만</span></button>
+            <button class="option"><span class="text">상호 스케쥴 조정</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">6</span> 연락가능 시간대</h2>
+          <div class="grid cols-3">
+            <button class="option tall"><span class="text">오전<br>(8:00~12:00)</span></button>
+            <button class="option tall"><span class="text">점심<br>(12:00~14:00)</span></button>
+            <button class="option tall"><span class="text">낮<br>(14:00~18:00)</span></button>
+            <button class="option tall"><span class="text">밤<br>(18:00~24:00)</span></button>
+            <button class="option tall"><span class="text">야간/새벽</span></button>
+            <button class="option tall"><span class="text">유동적으로</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">7</span> 합의가 부족한 플레이를 진행할 때 원하는 대처</h2>
+          <div class="grid cols-2">
+            <button class="option tall"><span class="text">안전어 후 중단 및 대화</span></button>
+            <button class="option tall"><span class="text">일단 참아보고 이후 대화</span></button>
+            <button class="option tall"><span class="text">소극적 거부의사 표현</span></button>
+            <button class="option tall"><span class="text">돔이 원한다면 일단 최선</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">8</span> 특별히 거부감을 느끼는 도구가 있습니까?</h2>
+          <div class="grid cols-2">
+            <button class="option"><span class="text">없다</span></button>
+            <button class="option"><span class="text">있다 <input class="inline-input" onclick="event.stopPropagation()" oninput="markParentSelected(this)" placeholder="거부하는 도구를 적어주세요" /></span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">9</span> 워십 불가능한 신체부위를 체크해주세요.</h2>
+          <div class="grid cols-5">
+            <button class="option"><span class="text">입술</span></button>
+            <button class="option"><span class="text">귀/목</span></button>
+            <button class="option"><span class="text">가슴</span></button>
+            <button class="option"><span class="text">등</span></button>
+            <button class="option"><span class="text">엉덩이</span></button>
+            <button class="option"><span class="text">허리</span></button>
+            <button class="option"><span class="text">다리</span></button>
+            <button class="option"><span class="text">발</span></button>
+            <button class="option"><span class="text">애널</span></button>
+            <button class="option"><span class="text">성기</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">10</span> 터치 예민한 신체부위를 체크해주세요.</h2>
+          <div class="grid cols-5">
+            <button class="option"><span class="text">얼굴</span></button>
+            <button class="option"><span class="text">입술</span></button>
+            <button class="option"><span class="text">귀/목</span></button>
+            <button class="option"><span class="text">가슴</span></button>
+            <button class="option"><span class="text">등</span></button>
+            <button class="option"><span class="text">엉덩이</span></button>
+            <button class="option"><span class="text">허리</span></button>
+            <button class="option"><span class="text">다리/발</span></button>
+            <button class="option"><span class="text">애널</span></button>
+            <button class="option"><span class="text">성기</span></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="q-title"><span class="q-num">11</span> 추가메모</h2>
+          <div class="memo-box" contenteditable="true" data-placeholder="추가로 합의할 내용, 선호, 안전어, 주의사항 등을 적어주세요."></div>
+        </section>
+
+        <footer class="footer">
+          <div>모든 문항은 복수선택 가능 · 체크 내용은 저장되지 않음 · 저장 전 민감정보를 꼭 한 번 더 확인해주세요.</div>
+          <div class="maker">♥ 만든 사람 - 헤븐 이둥둥 ♥</div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">저장 준비 중...</div>
+
+  <div id="previewModal" class="preview-modal" onclick="closePreview(event)">
+    <div class="preview-box">
+      <button class="preview-close" onclick="hidePreview()">닫기</button>
+      <div class="preview-title">이미지를 길게 눌러서 저장하기</div>
+      <div class="preview-help">아래 이미지를 길게 눌러서 저장하기를 선택해 주세요.</div>
+
+      <img id="previewImage" alt="저장용 체크리스트 이미지" />
+    </div>
+  </div>
+
+  <script>
+    const toast = document.getElementById("toast");
+
+    document.querySelectorAll(".grid").forEach((grid) => {
+      grid.addEventListener("click", (event) => {
+        const option = event.target.closest(".option");
+        if (!option) return;
+        option.classList.toggle("selected");
+      });
+    });
+
+    function markParentSelected(input) {
+      const option = input.closest(".option");
+      if (input.value.trim()) option.classList.add("selected");
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function resetChecklist() {
+      document.querySelectorAll(".option.selected").forEach((item) => item.classList.remove("selected"));
+      document.querySelectorAll("input").forEach((input) => input.value = "");
+      document.querySelectorAll(".memo-box").forEach((box) => box.innerText = "");
+      showToast("초기화 완료");
+    }
+
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod|Mobile|NAVER|KAKAOTALK|DaumApps/i.test(navigator.userAgent) || window.innerWidth <= 760;
+    }
+
+    function hidePreview() {
+      document.getElementById("previewModal").classList.remove("show");
+    }
+
+    function closePreview(event) {
+      if (event.target.id === "previewModal") hidePreview();
+    }
+
+    function showImagePreview(imageUrl) {
+      const modal = document.getElementById("previewModal");
+      const image = document.getElementById("previewImage");
+      image.src = imageUrl;
+      modal.classList.add("show");
+    }
+
+    async function uploadImageToServer(dataUrl) {
+      const response = await fetch("/.netlify/functions/save-image", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ image: dataUrl })
+      });
+
+      const text = await response.text();
+      let result = null;
+
+      try {
+        result = text ? JSON.parse(text) : null;
+      } catch (error) {
+        result = { error: text };
+      }
+
+      if (!response.ok) {
+        const message = result?.error || `서버 오류 ${response.status}`;
+        throw new Error(message);
+      }
+
+      return result;
+    }
+
+    async function saveAsImage() {
+      const target = document.getElementById("captureArea");
+      showToast("이미지 만드는 중...");
+      document.activeElement?.blur();
+      await new Promise((resolve) => setTimeout(resolve, 350));
+
+      const scale = isMobileDevice() ? 1.05 : 1.25;
+
+      const canvas = await html2canvas(target, {
+        scale,
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        logging: false,
+        windowWidth: target.scrollWidth,
+        windowHeight: target.scrollHeight
+      });
+
+      const nickname = document.getElementById("nickname").value.trim() || "heaven";
+      const safeName = nickname.replace(/[\\/:*?"<>|\s]+/g, "_");
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
+
+      try {
+        showToast("서버에 이미지 저장 중...");
+        const result = await uploadImageToServer(dataUrl);
+
+        if (isMobileDevice()) {
+          showImagePreview(result.imageUrl);
+          showToast("이미지를 길게 눌러서 저장하기");
+          return;
+        }
+
+        const link = document.createElement("a");
+        link.href = result.downloadUrl;
+        link.download = `${safeName}_heaven_checklist.jpg`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showToast("JPG 저장 완료");
+      } catch (error) {
+        console.error(error);
+        showToast(error.message || "저장 실패. 다시 시도해주세요.");
+      }
+    }
+  </script>
+</body>
+</html>
